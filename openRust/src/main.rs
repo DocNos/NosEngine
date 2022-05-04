@@ -2,8 +2,8 @@
 extern crate nalgebra as na;
 use na::{Vector2, Matrix};
 use std::ptr;
-mod Nos_Transform;
-use Nos_Transform::transNos;
+mod TransformNE;
+use TransformNE::transNos;
 
 fn main() 
 {
