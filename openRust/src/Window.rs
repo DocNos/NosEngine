@@ -1,13 +1,21 @@
-extern crate glium;
+use glium::*;
 
-pub struct Window
+// Generic - "Template"
+// 'a is a generic lifetime parameter. 
+// In this case, the generic is the context of opengl
+//      context is the current state of the window. 
+pub struct _Window<'a, T: glium::glutin::ContextCurrentState>
 {
+    display_ : glium::Display,
+    contextBuilder_ : glium::glutin::ContextBuilder<'a,T>,
+    windowBuilder_ : glium::glutin::window::WindowBuilder,
+    eventLoop_ : glium::glutin::event_loop::EventLoop<T>,
     
 }
 
-impl Window
+impl<T> _Window<T>
 {
-    pub fn CreateWindow()
+    pub fn CreateWindow(&self) -> _Window<T>
     {
         // 1. The **winit::EventsLoop** for handling events.
         let mut events_loop = 
@@ -24,5 +32,15 @@ impl Window
         //    window with the events_loop.
         let display = 
             glium::Display::new(wb, cb, &events_loop).unwrap();
+        
+        let newWin : _Window<T> = _Window{ display_ : display
+                                  , eventLoop_ : events_loop
+                                  , windowBuilder_ : wb
+                                  , contextBuilder_ : cb};
+    }
+
+    pub fn ShouldClose(&self) -> bool
+    {
+        
     }
 }
