@@ -1,0 +1,11 @@
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/khronos_api-9462d5dd8a066c47.rmeta: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/gl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/egl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/wgl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/glx.xml
+
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/libkhronos_api-9462d5dd8a066c47.rlib: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/gl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/egl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/wgl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/glx.xml
+
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/khronos_api-9462d5dd8a066c47.d: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/gl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/egl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/wgl.xml /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/glx.xml
+
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/lib.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/gl.xml:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/egl.xml:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/wgl.xml:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/khronos_api-0.0.5/src/../api/glx.xml:

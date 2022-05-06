@@ -1,0 +1,12 @@
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/tempfile-b1b9486c410f31a1.rmeta: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/util.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/mod.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/unix.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/named.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/unnamed.rs
+
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/libtempfile-b1b9486c410f31a1.rlib: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/util.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/mod.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/unix.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/named.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/unnamed.rs
+
+/mnt/c/Users/Jacob/Desktop/Rust Stuff/GFX OpenGL/openRust/target/debug/deps/tempfile-b1b9486c410f31a1.d: /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/lib.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/util.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/mod.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/unix.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/named.rs /home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/unnamed.rs
+
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/lib.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/util.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/mod.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/imp/unix.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/named.rs:
+/home/nos/.cargo/registry/src/github.com-1ecc6299db9ec823/tempfile-2.2.0/src/unnamed.rs:

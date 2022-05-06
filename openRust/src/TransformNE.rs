@@ -8,7 +8,7 @@ pub struct transNos
     //      dyn is object safe
     // U3 is a unsigned int 3 - 
     //      alias for Const<3>
-    pub matrix_: dyn DMatrix<f32, U3, U3>,
+    //pub matrix_: dyn DMatrix<f32, U3, U3>,
 }
 
 impl transNos
