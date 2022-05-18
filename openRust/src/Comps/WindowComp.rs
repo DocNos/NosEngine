@@ -1,5 +1,5 @@
 use glium::*;
-
+use crate::Comps::Object::*;
 // Generic - "Template"
 // 'a is a lifetime parameter. 
 //        Generic -> Concrete lifetime

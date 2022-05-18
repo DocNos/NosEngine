@@ -4,7 +4,7 @@ extern crate glium;
 
 use na::{Vector2, Matrix};
 use std::ptr;
-mod Engine;
+mod Comps;
 
 fn main() 
 {

@@ -1,5 +1,5 @@
 use nalgebra::{Vector2, Matrix};
-
+use crate::Comps::Object::*;
 pub struct TransComp
 {    
     // INTERFACE /////////// 

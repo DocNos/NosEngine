@@ -1,6 +1,6 @@
-mod Object;
+use crate::Comps::Object::*;
 
-pub struct Engine<T>
+pub struct Engine
 {   
     // INTERFACE /////////// 
     name_ : str,
@@ -10,11 +10,16 @@ pub struct Engine<T>
 
     ////////////////////////
 
-    components_ : [Object; T],  // Transform & Window.  
+    components_ : [Object<T>; 2],  // Transform & Window.  
+}
+
+impl Engine
+{
+
 }
 
 // Inheritance through traits
-impl<T> Object for Engine<T>
+impl Object for Engine
 {
     fn Name(&self)      -> str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
