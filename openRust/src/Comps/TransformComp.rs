@@ -1,9 +1,10 @@
 use nalgebra::{Vector2, Matrix};
 use crate::Comps::Object::*;
-pub struct TransComp
+
+pub struct TransComp<'a>
 {    
     // INTERFACE /////////// 
-    name_ : str,
+    name_ : &'a str,
     prevState_ : ObjState,
     currState_ : ObjState,
     nextState_ : ObjState,
@@ -19,9 +20,9 @@ pub struct TransComp
     //pub matrix_: dyn DMatrix<f32, U3, U3>,
 }
 
-impl Object for TransComp
+impl Object for TransComp<'a>
 {
-    fn Name(&self)      -> str { self.name_ }
+    fn Name(&self)      -> &'a str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }

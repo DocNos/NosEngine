@@ -1,5 +1,5 @@
-mod Object;
-mod Engine;
-mod TransformComp;
-mod WindowComp;
+pub mod Object;
+pub mod Engine;
+pub mod TransformComp;
+pub mod WindowComp;
 

@@ -5,6 +5,7 @@ extern crate glium;
 use na::{Vector2, Matrix};
 use std::ptr;
 mod Comps;
+use crate::Comps::Engine::*;
 
 fn main() 
 {
@@ -15,6 +16,6 @@ fn main()
     //            };
     //let win0 = Window::CreateWindow();
 
-    let eng0 : Engine<3>;
+    let eng0 : Engine;
     println!("Hello, world!");
 }

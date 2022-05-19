@@ -11,10 +11,10 @@ use crate::Comps::Object::*;
 // In this case, the generic T is the context of opengl
 //      context is the current state of the window. 
 // 
-pub struct Window//<'a, T: glium::glutin::ContextCurrentState>
+pub struct Window<'a>//<'a, T: glium::glutin::ContextCurrentState>
 {
     // INTERFACE /////////// 
-    name_ : str,
+    name_ : &'a str,
     prevState_ : ObjState,
     currState_ : ObjState,
     nextState_ : ObjState,
@@ -28,14 +28,14 @@ pub struct Window//<'a, T: glium::glutin::ContextCurrentState>
     
 }
 
-impl Object for Window
+impl Object for Window<'a>
 {
-    fn Name(&self)      -> str { self.name_ }
+    fn Name(&self)      -> &'a str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
-    fn Create(&self) -> &Object<Window>
+    fn Create(&self) -> &dyn Object
     {
         // 1. The **winit::EventsLoop** for handling events.
         let mut _eventLoop = 
@@ -62,10 +62,8 @@ impl Object for Window
 impl Window
 {
     pub fn CreateWindow(&self) -> Window//<T>
-    {
-        
-        
-        return Window{ display_ : _display};
+    {        
+        return self.Create();
     }
 
     pub fn ShouldClose(&self) -> bool

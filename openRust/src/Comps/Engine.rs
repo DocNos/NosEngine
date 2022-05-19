@@ -1,38 +1,36 @@
 use crate::Comps::Object::*;
+use ObjState;
 
-pub struct Engine
+
+pub struct Engine<'a>
 {   
     // INTERFACE /////////// 
-    name_ : str,
+    name_ : &'a str,
     prevState_ : ObjState,
     currState_ : ObjState,
     nextState_ : ObjState,
 
     ////////////////////////
 
-    components_ : [Object<T>; 2],  // Transform & Window.  
+    //components_ : [Object<T>; 2],  // Transform & Window.  
 }
 
-impl Engine
-{
 
-}
 
 // Inheritance through traits
-impl Object for Engine
+impl Object for Engine<'a>
 {
-    fn Name(&self)      -> str { self.name_ }
+    fn Name(&self)      -> &'a str { self.name_ } // "Unbox" value aka dereference
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
 
 
-    fn Create<Engine : i8 >(&self) 
-        -> &Object<Engine<i8>>
+    fn Create(&self) -> &dyn Object
     {
         self.name_ = "Engine";
-        self.nextState_ = oUpdate;
+        self.nextState_ = ObjState::oUpdate;
         return self;
     }
 
