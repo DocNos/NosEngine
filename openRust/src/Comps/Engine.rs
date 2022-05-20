@@ -1,7 +1,7 @@
 use crate::Comps::Object::*;
 use ObjState;
 
-
+#[derive(Copy, Clone)]
 pub struct Engine<'a>
 {   
     // INTERFACE /////////// 
@@ -18,7 +18,7 @@ pub struct Engine<'a>
 
 
 // Inheritance through traits
-impl Object for Engine<'a>
+impl<'a> Object for Engine<'a>
 {
     fn Name(&self)      -> &'a str { self.name_ } // "Unbox" value aka dereference
     fn PrevState(&self) -> ObjState { self.prevState_ }
@@ -27,7 +27,7 @@ impl Object for Engine<'a>
 
 
 
-    fn Create(&self) -> &dyn Object
+    fn Create(&mut self) -> &dyn Object
     {
         self.name_ = "Engine";
         self.nextState_ = ObjState::oUpdate;
@@ -44,10 +44,13 @@ impl Object for Engine<'a>
         self.currState_
     }
 
-    fn Update(&self, dt : u32)
+    fn Update(&mut self, dt : u32)
     {
-        self.CheckState(self);
+        // Self is implied on trait (member) fn call
+        self.CheckState();
     }
+
+    fn Destroy(&mut self) {}
 
 }
 

@@ -11,6 +11,7 @@ use crate::Comps::Object::*;
 // In this case, the generic T is the context of opengl
 //      context is the current state of the window. 
 // 
+#[derive(Clone)]
 pub struct Window<'a>//<'a, T: glium::glutin::ContextCurrentState>
 {
     // INTERFACE /////////// 
@@ -28,14 +29,14 @@ pub struct Window<'a>//<'a, T: glium::glutin::ContextCurrentState>
     
 }
 
-impl Object for Window<'a>
+impl<'a> Object for Window<'a>
 {
     fn Name(&self)      -> &'a str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
-    fn Create(&self) -> &dyn Object
+    fn Create(&mut self) -> &dyn Object
     {
         // 1. The **winit::EventsLoop** for handling events.
         let mut _eventLoop = 
@@ -50,20 +51,25 @@ impl Object for Window<'a>
             glium::glutin::ContextBuilder::new();
         // 4. Build the Display with the given window and OpenGL context parameters and register the
         //    window with the events_loop.
-        self.display = 
+        self.display_ = 
             glium::Display::new(_windowBuilder
                                 , _contextBuilder
                                 , &_eventLoop).unwrap();
         return self;
     }
 
+    fn CheckState(&mut self) -> ObjState { self.currState_}
+    fn Update(&mut self, dt: u32) {}
+    fn Destroy(&mut self) {}
+
 }
 
-impl Window
+impl<'a> Window<'a>
 {
-    pub fn CreateWindow(&self) -> Window//<T>
+    pub fn CreateWindow(&mut self) -> &Window <'a>
     {        
-        return self.Create();
+        self.Create();
+        self
     }
 
     pub fn ShouldClose(&self) -> bool

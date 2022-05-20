@@ -1,4 +1,6 @@
-
+// Need partialEq for compare : == , =!
+#[derive(PartialEq)]
+#[derive(Copy, Clone)]
 pub enum ObjState
 {
     oInvalid,
@@ -10,17 +12,18 @@ pub enum ObjState
 
 
 // T : object type (Transform, Engine, Window)
+
 pub trait Object
 {
-    fn Name(&self) -> str;
+    fn Name(&self) -> &str;
     fn CurrState(&self) -> ObjState;
     fn NextState(&self) -> ObjState;
     fn PrevState(&self) -> ObjState;
 
-    fn Create(&self) -> &dyn Object;   
-    fn CheckState(&self) -> ObjState;
-    fn Update(&self, dt : u32);
-    fn Destroy(&self);
+    fn Create(&mut self) -> &dyn Object;   
+    fn CheckState(&mut self) -> ObjState;
+    fn Update(&mut self, dt : u32);
+    fn Destroy(&mut self);
 }
 
 

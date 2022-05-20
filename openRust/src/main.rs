@@ -6,7 +6,6 @@ use na::{Vector2, Matrix};
 use std::ptr;
 mod Comps;
 use crate::Comps::Engine::*;
-
 fn main() 
 {
     let pos0 = Vector2 { x : 0, y : 0};
@@ -16,6 +15,7 @@ fn main()
     //            };
     //let win0 = Window::CreateWindow();
 
+    // Engine<3> eng0;
     let eng0 : Engine;
     println!("Hello, world!");
 }

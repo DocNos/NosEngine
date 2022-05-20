@@ -1,6 +1,7 @@
 use nalgebra::{Vector2, Matrix};
 use crate::Comps::Object::*;
 
+#[derive(Copy, Clone)]
 pub struct TransComp<'a>
 {    
     // INTERFACE /////////// 
@@ -20,17 +21,27 @@ pub struct TransComp<'a>
     //pub matrix_: dyn DMatrix<f32, U3, U3>,
 }
 
-impl Object for TransComp<'a>
+impl<'a> Object for TransComp<'a>
 {
     fn Name(&self)      -> &'a str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
+    fn Create(&mut self) -> &dyn Object 
+    {
+        self.name_ = "Transform";
+        self.nextState_ = ObjState::oUpdate;
+        return self;
+    }
+    fn CheckState(&mut self) -> ObjState { self.currState_ }
+    fn Update(&mut self, dt: u32) {}
+    fn Destroy(&mut self) {}
+
 
 }
 
-impl TransComp
+impl<'a> TransComp<'a>
 {
     fn SetPos(&mut self, _pos : Vector2<f32>)
     {
