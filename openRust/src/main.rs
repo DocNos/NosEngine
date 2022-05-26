@@ -6,16 +6,22 @@ use na::{Vector2, Matrix};
 use std::ptr;
 mod Comps;
 use crate::Comps::Engine::*;
+use crate::Comps::Object::*;
+//use Object::Objstate;
 fn main() 
 {
     let pos0 = Vector2 { x : 0, y : 0};
-    // let trans0 = 
-    //    TransComp{ pos_      : Vector2 {x:5.0, y:-5.0} 
-    //            , rotation_ : Vector2{x:0.0, y:0.0}
-    //            };
-    //let win0 = Window::CreateWindow();
+    
 
     // Engine<3> eng0;
-    let eng0 : Engine;
-    println!("Hello, world!");
+    let mut eng0 = Engine 
+        { name_ : "" 
+        , prevState_ : ObjState::oInvalid
+        , currState_ : ObjState::oInvalid
+        , nextState_ : ObjState::oInvalid };
+
+    //let mut eng1 : Engine = eng1.Create();
+    
+    eng0.Create();
+    println!("{}" , eng0.name_);
 }

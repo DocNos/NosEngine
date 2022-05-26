@@ -5,10 +5,10 @@ use crate::Comps::Object::*;
 pub struct TransComp<'a>
 {    
     // INTERFACE /////////// 
-    name_ : &'a str,
-    prevState_ : ObjState,
-    currState_ : ObjState,
-    nextState_ : ObjState,
+    pub name_ : &'a str ,
+    pub prevState_ : ObjState,
+    pub currState_ : ObjState,
+    pub nextState_ : ObjState,
 
     ////////////////////////
 

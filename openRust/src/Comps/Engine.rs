@@ -1,18 +1,20 @@
 use crate::Comps::Object::*;
 use ObjState;
 
-#[derive(Copy, Clone)]
+use std::collections::HashMap;
+
+#[derive(Clone)]
 pub struct Engine<'a>
 {   
     // INTERFACE /////////// 
-    name_ : &'a str,
-    prevState_ : ObjState,
-    currState_ : ObjState,
-    nextState_ : ObjState,
+    pub name_ : &'a str ,
+    pub prevState_ : ObjState,
+    pub currState_ : ObjState,
+    pub nextState_ : ObjState,
 
     ////////////////////////
 
-    //components_ : [Object<T>; 2],  // Transform & Window.  
+    components_ : &'a HashMap<&'a str, dyn Object>,  // Transform & Window.  
 }
 
 
@@ -52,5 +54,13 @@ impl<'a> Object for Engine<'a>
 
     fn Destroy(&mut self) {}
 
+}
+
+impl<'a> Engine<'a>
+{
+    fn AddComp(objType : &'a str) 
+    {
+
+    }
 }
 
