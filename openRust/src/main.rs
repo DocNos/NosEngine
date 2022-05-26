@@ -14,14 +14,14 @@ fn main()
     
 
     // Engine<3> eng0;
-    let mut eng0 = Engine 
-        { name_ : "" 
-        , prevState_ : ObjState::oInvalid
-        , currState_ : ObjState::oInvalid
-        , nextState_ : ObjState::oInvalid };
+    //let mut eng0 = Engine 
+    //    { name_ : "" 
+    //    , prevState_ : ObjState::oInvalid
+    //    , currState_ : ObjState::oInvalid
+    //    , nextState_ : ObjState::oInvalid };
 
     //let mut eng1 : Engine = eng1.Create();
     
-    eng0.Create();
+    let eng0 = Engine::Create();
     println!("{}" , eng0.name_);
 }

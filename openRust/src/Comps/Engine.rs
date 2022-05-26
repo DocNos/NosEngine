@@ -29,11 +29,16 @@ impl<'a> Object for Engine<'a>
 
 
 
-    fn Create(&mut self) -> &dyn Object
+    fn Create() -> Self // Ctor for self
     {
-        self.name_ = "Engine";
-        self.nextState_ = ObjState::oUpdate;
-        return self;
+        return Self
+        {
+            name_ : "Engine",
+            prevState_ : ObjState::oInvalid,
+            currState_ : ObjState::oInvalid,
+            nextState_ : ObjState::oStart,            
+
+        }
     }
 
     fn CheckState(&mut self) -> ObjState

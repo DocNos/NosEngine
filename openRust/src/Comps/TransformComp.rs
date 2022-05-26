@@ -28,11 +28,18 @@ impl<'a> Object for TransComp<'a>
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
-    fn Create(&mut self) -> &dyn Object 
+    fn Create() -> Self
     {
-        self.name_ = "Transform";
-        self.nextState_ = ObjState::oUpdate;
-        return self;
+        return Self
+        {
+            name_ : "Transform",
+            prevState_ : ObjState::oInvalid,
+            currState_ : ObjState::oInvalid,
+            nextState_ : ObjState::oStart,  
+            pos_ : Vector2 { x : 0.0, y : 0.0},
+            rotation_ : Vector2 { x : 0.0, y : 0.0},          
+
+        }
     }
     fn CheckState(&mut self) -> ObjState { self.currState_ }
     fn Update(&mut self, dt: u32) {}

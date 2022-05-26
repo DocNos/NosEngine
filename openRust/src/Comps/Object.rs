@@ -20,7 +20,7 @@ pub trait Object
     fn NextState(&self) -> ObjState;
     fn PrevState(&self) -> ObjState;
 
-    fn Create(&mut self) -> &dyn Object;   
+    fn Create() -> Self;   
     fn CheckState(&mut self) -> ObjState;
     fn Update(&mut self, dt : u32);
     fn Destroy(&mut self);

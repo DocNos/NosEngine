@@ -36,7 +36,7 @@ impl<'a> Object for Window<'a>
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
 
-    fn Create(&mut self) -> &dyn Object
+    fn Create() -> Self
     {
         // 1. The **winit::EventsLoop** for handling events.
         let mut _eventLoop = 
@@ -51,11 +51,19 @@ impl<'a> Object for Window<'a>
             glium::glutin::ContextBuilder::new();
         // 4. Build the Display with the given window and OpenGL context parameters and register the
         //    window with the events_loop.
-        self.display_ = 
+        let _display_ = 
             glium::Display::new(_windowBuilder
                                 , _contextBuilder
                                 , &_eventLoop).unwrap();
-        return self;
+        return Self
+        {
+            name_ : "Window",
+            prevState_ : ObjState::oInvalid,
+            currState_ : ObjState::oInvalid,
+            nextState_ : ObjState::oStart,
+            display_ : _display_,         
+
+        }
     }
 
     fn CheckState(&mut self) -> ObjState { self.currState_}
@@ -66,11 +74,7 @@ impl<'a> Object for Window<'a>
 
 impl<'a> Window<'a>
 {
-    pub fn CreateWindow(&mut self) -> &Window <'a>
-    {        
-        self.Create();
-        self
-    }
+    
 
     pub fn ShouldClose(&self) -> bool
     {
