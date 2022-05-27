@@ -12,10 +12,10 @@ use crate::Comps::Object::*;
 //      context is the current state of the window. 
 // 
 #[derive(Clone)]
-pub struct Window<'a>//<'a, T: glium::glutin::ContextCurrentState>
+pub struct WindowComp//<'a, T: glium::glutin::ContextCurrentState>
 {
     // INTERFACE /////////// 
-    pub name_ : &'a str ,
+    pub name_ : &'static str ,
     pub prevState_ : ObjState,
     pub currState_ : ObjState,
     pub nextState_ : ObjState,
@@ -29,9 +29,9 @@ pub struct Window<'a>//<'a, T: glium::glutin::ContextCurrentState>
     
 }
 
-impl<'a> Object for Window<'a>
+impl Object for WindowComp
 {
-    fn Name(&self)      -> &'a str { self.name_ }
+    fn Name(&self)      -> &'static str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
@@ -72,10 +72,8 @@ impl<'a> Object for Window<'a>
 
 }
 
-impl<'a> Window<'a>
+impl WindowComp
 {
-    
-
     pub fn ShouldClose(&self) -> bool
     {
         true

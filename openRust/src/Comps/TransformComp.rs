@@ -2,10 +2,10 @@ use nalgebra::{Vector2, Matrix};
 use crate::Comps::Object::*;
 
 #[derive(Copy, Clone)]
-pub struct TransComp<'a>
+pub struct TransformComp
 {    
     // INTERFACE /////////// 
-    pub name_ : &'a str ,
+    pub name_ : &'static str ,
     pub prevState_ : ObjState,
     pub currState_ : ObjState,
     pub nextState_ : ObjState,
@@ -21,9 +21,9 @@ pub struct TransComp<'a>
     //pub matrix_: dyn DMatrix<f32, U3, U3>,
 }
 
-impl<'a> Object for TransComp<'a>
+impl Object for TransformComp
 {
-    fn Name(&self)      -> &'a str { self.name_ }
+    fn Name(&self)      -> &'static str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
     fn CurrState(&self) -> ObjState { self.currState_ }
     fn NextState(&self) -> ObjState { self.nextState_ }
@@ -48,7 +48,7 @@ impl<'a> Object for TransComp<'a>
 
 }
 
-impl<'a> TransComp<'a>
+impl TransformComp
 {
     fn SetPos(&mut self, _pos : Vector2<f32>)
     {
