@@ -29,7 +29,7 @@ pub struct WindowComp//<'a, T: glium::glutin::ContextCurrentState>
     
 }
 
-impl Object for WindowComp
+impl<T> Object<T> for WindowComp
 {
     fn Name(&self)      -> &'static str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
@@ -69,6 +69,8 @@ impl Object for WindowComp
     fn CheckState(&mut self) -> ObjState { self.currState_}
     fn Update(&mut self, dt: u32) {}
     fn Destroy(&mut self) {}
+
+    fn GetAttached(&self) -> T { self }
 
 }
 
