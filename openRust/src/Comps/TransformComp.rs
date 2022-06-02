@@ -21,7 +21,7 @@ pub struct TransformComp
     //pub matrix_: dyn DMatrix<f32, U3, U3>,
 }
 
-impl<T> Object<T> for TransformComp
+impl Object for TransformComp
 {
     fn Name(&self)      -> &'static str { self.name_ }
     fn PrevState(&self) -> ObjState { self.prevState_ }
@@ -45,7 +45,7 @@ impl<T> Object<T> for TransformComp
     fn Update(&mut self, dt: u32) {}
     fn Destroy(&mut self) {}
 
-    fn GetAttached(&self) -> T { self }
+    //fn GetAttached(&self) -> &TransformComp { self }
 
 }
 

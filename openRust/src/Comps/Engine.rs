@@ -6,7 +6,7 @@ use crate::Comps::WindowComp::*;
 use std::collections::HashMap;
 
 #[derive(Clone)]
-pub struct Engine<T>
+pub struct Engine
 {   
     // INTERFACE /////////// 
     pub name_ : &'static str ,
@@ -16,13 +16,14 @@ pub struct Engine<T>
 
     ////////////////////////
 
-    pub components_ : HashMap<&'static str, Box<dyn Object<T>>>,  // Transform & Window.  
+    pub components_ : HashMap<&'static str, Box<dyn Object>>,  // Transform & Window.  
+
 }
 
 
 
 // Inheritance through traits
-impl<T> Object<T> for Engine<T>
+impl Object for Engine
 {
     fn Name(&self)      -> &'static str { self.name_ } // "Unbox" value aka dereference
     fn PrevState(&self) -> ObjState { self.prevState_ }
@@ -62,11 +63,11 @@ impl<T> Object<T> for Engine<T>
 
     fn Destroy(&mut self) {}
 
-    fn GetAttached(&self) -> T { self }
+    //fn GetAttached(&self) -> &Engine { self }
 
 }
 
-impl<T> Engine<T>
+impl Engine
 {
     // Add components by name (or enum?)
     // Key for components map
@@ -97,8 +98,9 @@ impl<T> Engine<T>
     // https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
     // Hashmap get returns an option - 
     //  Some or None(nullptr). Rust has no null value.
-    pub fn GetComp(&self, compKey : &'static str) 
-        -> &'static Box<dyn Object<T> + '_>
+    pub fn GetComp<compType>(&self, compKey : &'static str) 
+        -> &(dyn Object + '_) // Box aka ptr. static lifetime - 
+                                               //         duration of program
     {        
         self.components_.get(&compKey).unwrap()        
     }

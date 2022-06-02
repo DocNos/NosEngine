@@ -12,7 +12,7 @@ pub enum ObjState
 
 
 // T : object type (Transform, Engine, Window)
-pub trait Object<T> : ObjectClone<T>
+pub trait Object : ObjectClone
 {
     fn Name(&self) -> &str;
     fn CurrState(&self) -> ObjState;
@@ -24,26 +24,26 @@ pub trait Object<T> : ObjectClone<T>
     fn Update(&mut self, dt : u32);
     fn Destroy(&mut self);
 
-    fn GetAttached(&self) -> T;
+    //fn GetAttached<T>(&self) -> T;
 }
 
-trait ObjectClone<T>
+trait ObjectClone
 {
-    fn cloneBox(&self) -> Box<dyn Object<T>>;    
+    fn cloneBox(&self) -> Box<dyn Object>;    
 }
 
-impl<T,F> ObjectClone<F> for T
-    where T: 'static + Object<F> + Clone,
+impl<T> ObjectClone for T
+    where T: 'static + Object + Clone,
 {
-    fn cloneBox(&self) -> Box<dyn Object<F>>
+    fn cloneBox(&self) -> Box<dyn Object>
     {
         Box::new(self.clone())
     }
 }
 
-impl<T> Clone for Box<dyn Object<T>>
+impl Clone for Box<dyn Object>
 {
-    fn clone(&self) -> Box<dyn Object<T>>
+    fn clone(&self) -> Box<dyn Object>
     {
         self.cloneBox()
     }
