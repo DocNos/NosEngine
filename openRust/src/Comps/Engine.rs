@@ -17,6 +17,7 @@ pub struct Engine
     ////////////////////////
 
     pub components_ : HashMap<&'static str, Box<dyn Object>>,  // Transform & Window.  
+
 }
 
 
@@ -62,6 +63,8 @@ impl Object for Engine
 
     fn Destroy(&mut self) {}
 
+    //fn GetAttached(&self) -> &Engine { self }
+
 }
 
 impl Engine
@@ -95,10 +98,21 @@ impl Engine
     // https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
     // Hashmap get returns an option - 
     //  Some or None(nullptr). Rust has no null value.
-    pub fn GetComp(&self, compKey : &'static str) 
-        -> &'static Box<dyn Object + '_>
+    pub fn GetComp<compType>(&self, compKey : &'static str) 
+        -> &(dyn Object + '_) // Box aka ptr. static lifetime - 
+                                               //         duration of program
     {        
-        self.components_.get(&compKey).unwrap()         
+        self.components_.get(&compKey).unwrap()        
     }
 }
 
+/*
+if self.components_.get(&compKey).is_some()
+{
+    self.components_.get(&compKey).unwrap()
+}       
+else
+{
+    None
+}
+*/

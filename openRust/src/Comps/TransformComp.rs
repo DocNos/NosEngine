@@ -45,6 +45,7 @@ impl Object for TransformComp
     fn Update(&mut self, dt: u32) {}
     fn Destroy(&mut self) {}
 
+    //fn GetAttached(&self) -> &TransformComp { self }
 
 }
 
