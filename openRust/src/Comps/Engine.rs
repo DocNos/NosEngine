@@ -5,6 +5,14 @@ use crate::Comps::WindowComp::*;
 
 use std::collections::HashMap;
 
+#[derive(Clone,Eq, Hash, PartialEq)]
+pub enum CompType
+{
+    cTrans,
+    cWin,
+    
+}
+
 #[derive(Clone)]
 pub struct Engine
 {   
@@ -16,7 +24,7 @@ pub struct Engine
 
     ////////////////////////
 
-    pub components_ : HashMap<&'static str, Box<dyn Object>>,  // Transform & Window.  
+    pub components_ : HashMap<CompType, Box<dyn Object>>,  // Transform & Window.  
 }
 
 
@@ -68,23 +76,23 @@ impl Engine
 {
     // Add components by name (or enum?)
     // Key for components map
-    pub fn AddComp(&mut self, objType : &'static str) 
+    pub fn AddComp(&mut self, compType : CompType) 
     {        
-        match objType
+        match compType
         {
-            "Transform" => 
+            CompType::cTrans => 
             {
                 let mut trans0 : TransformComp = TransformComp::Create();
-                trans0.name_ = objType;
+                trans0.name_ = "Transform";
                 self.components_
-                    .insert(objType, Box::new(trans0));
+                    .insert(compType, Box::new(trans0));
             }
-            "Window" => 
+            CompType::cWin => 
             {
                 let mut win0 : WindowComp = WindowComp::Create();
-                win0.name_ = objType;
+                win0.name_ = "Window";
                 self.components_
-                    .insert(objType, Box::new(win0));
+                    .insert(compType, Box::new(win0));
             }
             _ => return
         }
@@ -95,10 +103,19 @@ impl Engine
     // https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
     // Hashmap get returns an option - 
     //  Some or None(nullptr). Rust has no null value.
-    pub fn GetComp(&self, compKey : &'static str) 
-        -> &'static Box<dyn Object + '_>
-    {        
-        self.components_.get(&compKey).unwrap()         
+    //pub fn GetComp(&self, compKey : &'static str) 
+    //    -> &'static Box<dyn Object + '_>
+    //{        
+    //    self.components_.get(&compKey).unwrap()         
+    //}
+
+    pub fn GetTrans(&self) -> &TransformComp
+    {       
+        let comp = self.components_.get(&CompType::cTrans)
+            .unwrap();
+        return Box::into_raw(comp);
+
     }
+
 }
 

@@ -21,16 +21,18 @@ fn main()
     //    , currState_ : ObjState::oInvalid
     //    , nextState_ : ObjState::oInvalid };
 
-    //let mut eng1 : Engine = eng1.Create();
+    
     
     // Issue with the current virtualization found -
     // Storing comps as Objects in engine: 
     //  due to the heirarchy, cannot convert to TransformComp.
     // 
     let mut eng0 = Engine::Create();
-    eng0.AddComp("Transform");
-    let trans0 : &TransformComp = 
-        eng0.GetComp("Transform") as &TransformComp;
+    eng0.AddComp(CompType::cTrans);
+    // let trans0 : &TransformComp = 
+    //    eng0.GetComp("Transform") as &TransformComp;
+    let trans0 : &TransformComp = eng0.GetTrans();
+        
     println!("{}" , eng0.name_);
-    println!("{}" , trans0.name_);
+    // println!("{}" , trans0.name_);
 }
