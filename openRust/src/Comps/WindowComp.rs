@@ -70,6 +70,8 @@ impl Object for WindowComp
     fn Update(&mut self, dt: u32) {}
     fn Destroy(&mut self) {}
 
+    //fn GetAttached(&self) -> &WindowComp { self }
+
 }
 
 impl WindowComp

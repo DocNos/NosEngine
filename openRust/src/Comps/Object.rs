@@ -23,6 +23,8 @@ pub trait Object : ObjectClone
     fn CheckState(&mut self) -> ObjState;
     fn Update(&mut self, dt : u32);
     fn Destroy(&mut self);
+
+    //fn GetAttached<T>(&self) -> T;
 }
 
 trait ObjectClone
