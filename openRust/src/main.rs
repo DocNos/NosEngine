@@ -7,7 +7,7 @@ use std::boxed::Box;
 use std::ptr;
 mod Comps;
 use crate::Comps::Engine::*;
-use crate::Comps::Object::*;
+//use crate::Comps::Object::*;
 use crate::Comps::TransformComp::*;
 
 fn main() 
@@ -29,20 +29,12 @@ fn main()
     //  due to the heirarchy, cannot convert to TransformComp.
     // 
     let mut eng0 = Engine::Create();
-<<<<<<< HEAD
     eng0.AddComp(CompType::cTrans);
-    // let trans0 : &TransformComp = 
-    //    eng0.GetComp("Transform") as &TransformComp;
-    let trans0 : &TransformComp = eng0.GetTrans();
-        
-=======
-    eng0.AddComp("Transform");
     //let trans0 : &TransformComp = 
     //    eng0.GetComp("Transform") as &TransformComp;
     let trans0 = 
-        (eng0.GetComp::<TransformComp>("Transform"));
+        (eng0.GetComp::<TransformComp>(CompType::cTrans));
     //let trans1 : &TransformComp = Unbox::<TransformComp>(trans0);
->>>>>>> e9882e08727aad18b31a953ccdc94440b0f25ba6
     println!("{}" , eng0.name_);
     // println!("{}" , trans0.name_);
 }

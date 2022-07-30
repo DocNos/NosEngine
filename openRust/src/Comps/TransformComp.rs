@@ -5,10 +5,10 @@ use crate::Comps::Object::*;
 pub struct TransformComp
 {    
     // INTERFACE /////////// 
-    pub name_ : &'static str ,
-    pub prevState_ : ObjState,
-    pub currState_ : ObjState,
-    pub nextState_ : ObjState,
+    //pub name_ : &'static str ,
+    //pub prevState_ : ObjState,
+    //pub currState_ : ObjState,
+    //pub nextState_ : ObjState,
 
     ////////////////////////
 
@@ -23,27 +23,19 @@ pub struct TransformComp
 
 impl Object for TransformComp
 {
-    fn Name(&self)      -> &'static str { self.name_ }
-    fn PrevState(&self) -> ObjState { self.prevState_ }
-    fn CurrState(&self) -> ObjState { self.currState_ }
-    fn NextState(&self) -> ObjState { self.nextState_ }
-
     fn Create() -> Self
     {
         return Self
         {
-            name_ : "Transform",
-            prevState_ : ObjState::oInvalid,
-            currState_ : ObjState::oInvalid,
-            nextState_ : ObjState::oStart,  
+            //name_ : "Transform",
+            //prevState_ : ObjState::oInvalid,
+            //currState_ : ObjState::oInvalid,
+            //nextState_ : ObjState::oStart,  
             pos_ : Vector2 { x : 0.0, y : 0.0},
             rotation_ : Vector2 { x : 0.0, y : 0.0},          
 
         }
     }
-    fn CheckState(&mut self) -> ObjState { self.currState_ }
-    fn Update(&mut self, dt: u32) {}
-    fn Destroy(&mut self) {}
 
     //fn GetAttached(&self) -> &TransformComp { self }
 

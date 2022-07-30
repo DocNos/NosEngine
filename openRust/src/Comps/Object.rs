@@ -1,51 +1,10 @@
-// Need partialEq for compare : == , =!
-#[derive(PartialEq)]
-#[derive(Copy, Clone)]
-pub enum ObjState
+use crate::Comps::TraitObj::*
+
+struct ObjectBasic 
 {
-    oInvalid,
-    oStart,
-    oUpdate,
-    oStop,
-    oRestart,
+    pub name_ : &'static str
+    pub prevState_ : TraitObj::ObjState,
+    pub currState_ : TraitObj::ObjState,
+    pub nextState_ : TraitObj::ObjState,
+
 }
-
-
-// T : object type (Transform, Engine, Window)
-pub trait Object : ObjectClone
-{
-    fn Name(&self) -> &str;
-    fn CurrState(&self) -> ObjState;
-    fn NextState(&self) -> ObjState;
-    fn PrevState(&self) -> ObjState;
-                // where -> specifying constraints on lifetime & generic (template) parameters
-    fn Create() -> Self where Self: Sized;   
-    fn CheckState(&mut self) -> ObjState;
-    fn Update(&mut self, dt : u32);
-    fn Destroy(&mut self);
-
-    //fn GetAttached<T>(&self) -> T;
-}
-
-trait ObjectClone
-{
-    fn cloneBox(&self) -> Box<dyn Object>;    
-}
-
-impl<T> ObjectClone for T
-    where T: 'static + Object + Clone,
-{
-    fn cloneBox(&self) -> Box<dyn Object>
-    {
-        Box::new(self.clone())
-    }
-}
-
-impl Clone for Box<dyn Object>
-{
-    fn clone(&self) -> Box<dyn Object>
-    {
-        self.cloneBox()
-    }
-}
-

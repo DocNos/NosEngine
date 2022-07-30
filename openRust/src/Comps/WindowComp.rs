@@ -1,5 +1,6 @@
 use glium::*;
 use crate::Comps::Object::*;
+use crate::Comps::ObjBasic;
 // Generic - "Template"
 // 'a is a lifetime parameter. 
 //        Generic -> Concrete lifetime
@@ -15,10 +16,10 @@ use crate::Comps::Object::*;
 pub struct WindowComp//<'a, T: glium::glutin::ContextCurrentState>
 {
     // INTERFACE /////////// 
-    pub name_ : &'static str ,
-    pub prevState_ : ObjState,
-    pub currState_ : ObjState,
-    pub nextState_ : ObjState,
+    //pub name_ : &'static str ,
+    //pub prevState_ : ObjState,
+    //pub currState_ : ObjState,
+    //pub nextState_ : ObjState,
 
     ////////////////////////
 
@@ -29,14 +30,9 @@ pub struct WindowComp//<'a, T: glium::glutin::ContextCurrentState>
     
 }
 
-impl Object for WindowComp
+impl ObjBasic for WindowComp
 {
-    fn Name(&self)      -> &'static str { self.name_ }
-    fn PrevState(&self) -> ObjState { self.prevState_ }
-    fn CurrState(&self) -> ObjState { self.currState_ }
-    fn NextState(&self) -> ObjState { self.nextState_ }
-
-    fn Create() -> Self
+    fn init() -> Self
     {
         // 1. The **winit::EventsLoop** for handling events.
         let mut _eventLoop = 
@@ -58,17 +54,17 @@ impl Object for WindowComp
         return Self
         {
             name_ : "Window",
-            prevState_ : ObjState::oInvalid,
-            currState_ : ObjState::oInvalid,
-            nextState_ : ObjState::oStart,
+            //prevState_ : ObjState::oInvalid,
+            //currState_ : ObjState::oInvalid,
+            //nextState_ : ObjState::oStart,
             display_ : _display_,         
 
         }
     }
 
-    fn CheckState(&mut self) -> ObjState { self.currState_}
-    fn Update(&mut self, dt: u32) {}
-    fn Destroy(&mut self) {}
+    //fn CheckState(&mut self) -> ObjState { self.currState_}
+    //fn Update(&mut self, dt: u32) {}
+    //fn Destroy(&mut self) {}
 
     //fn GetAttached(&self) -> &WindowComp { self }
 

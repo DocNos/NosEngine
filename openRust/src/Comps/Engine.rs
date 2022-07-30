@@ -1,5 +1,4 @@
 use crate::Comps::Object::*;
-use ObjState;
 use crate::Comps::TransformComp::*;
 use crate::Comps::WindowComp::*;
 
@@ -16,20 +15,17 @@ pub enum CompType
 #[derive(Clone)]
 pub struct Engine
 {   
+    pub components_ : HashMap<CompType, &'static Object>,  // Transform & Window.  
+
     // INTERFACE /////////// 
-    pub name_ : &'static str ,
-    pub prevState_ : ObjState,
-    pub currState_ : ObjState,
-    pub nextState_ : ObjState,
+    //pub name_ : &'static str ,
+    //pub prevState_ : ObjState,
+    //pub currState_ : ObjState,
+    //pub nextState_ : ObjState,
 
     ////////////////////////
 
-<<<<<<< HEAD
-    pub components_ : HashMap<CompType, Box<dyn Object>>,  // Transform & Window.  
-=======
-    pub components_ : HashMap<&'static str, Box<dyn Object>>,  // Transform & Window.  
-
->>>>>>> e9882e08727aad18b31a953ccdc94440b0f25ba6
+    
 }
 
 
@@ -37,13 +33,7 @@ pub struct Engine
 // Inheritance through traits
 impl Object for Engine
 {
-    fn Name(&self)      -> &'static str { self.name_ } // "Unbox" value aka dereference
-    fn PrevState(&self) -> ObjState { self.prevState_ }
-    fn CurrState(&self) -> ObjState { self.currState_ }
-    fn NextState(&self) -> ObjState { self.nextState_ }
-
-
-    // Return type is Self{}. 
+        // Return type is Self{}. 
     fn Create() -> Self // Ctor for self
     {
         return Self
@@ -57,6 +47,7 @@ impl Object for Engine
         }
     }
 
+    /*
     fn CheckState(&mut self) -> ObjState
     {
         if self.nextState_ != self.currState_
@@ -75,7 +66,7 @@ impl Object for Engine
 
     fn Destroy(&mut self) {}
 
-    //fn GetAttached(&self) -> &Engine { self }
+    //fn GetAttached(&self) -> &Engine { self } */
 
 }
 
@@ -92,14 +83,14 @@ impl Engine
                 let mut trans0 : TransformComp = TransformComp::Create();
                 trans0.name_ = "Transform";
                 self.components_
-                    .insert(compType, Box::new(trans0));
+                    .insert(compType, &trans0);
             }
             CompType::cWin => 
             {
                 let mut win0 : WindowComp = WindowComp::Create();
                 win0.name_ = "Window";
                 self.components_
-                    .insert(compType, Box::new(win0));
+                    .insert(compType, &win0);
             }
             _ => return
         }
@@ -110,26 +101,14 @@ impl Engine
     // https://doc.rust-lang.org/book/ch06-01-defining-an-enum.html
     // Hashmap get returns an option - 
     //  Some or None(nullptr). Rust has no null value.
-<<<<<<< HEAD
-    //pub fn GetComp(&self, compKey : &'static str) 
-    //    -> &'static Box<dyn Object + '_>
-    //{        
-    //    self.components_.get(&compKey).unwrap()         
-    //}
-
-    pub fn GetTrans(&self) -> &TransformComp
-    {       
-        let comp = self.components_.get(&CompType::cTrans)
-            .unwrap();
-        return Box::into_raw(comp);
-
-=======
-    pub fn GetComp<compType>(&self, compKey : &'static str) 
-        -> &(dyn Object + '_) // Box aka ptr. static lifetime - 
-                                               //         duration of program
+    pub fn GetComp<compType>(&self, compKey : CompType) 
+        -> &'static dyn Object //  
+                                              
     {        
-        self.components_.get(&compKey).unwrap()        
->>>>>>> e9882e08727aad18b31a953ccdc94440b0f25ba6
+        let opt = self.components_.get(&compKey);
+        let comp = opt.unwrap();
+        return comp;
+
     }
 
 }
